@@ -20,6 +20,6 @@
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
     "nativewind-env.d.ts"
-, "constants/components.js"  ],
+, "constants/components.js", "tailwind.config.js"  ],
   "exclude": ["node_modules"]
 }
