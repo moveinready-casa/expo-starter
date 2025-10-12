@@ -3,11 +3,16 @@ import "@expo/browser-polyfill";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
-import { Platform, useColorScheme } from "react-native";
+import { Platform, useColorScheme, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { VariableContextProvider} from "react-native-css";
 import "./global.css";
 
-export default function RootLayout() {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const theme = useTheme();
   const colorScheme = useColorScheme();
 
@@ -27,6 +32,7 @@ export default function RootLayout() {
     }
   }, [colorScheme]);
 
+
   return (
     <GestureHandlerRootView>
       <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
@@ -39,6 +45,7 @@ export default function RootLayout() {
           headerStyle: { backgroundColor: theme.background },
         }}
       />
+      <View className="dark">{children}</View>
     </GestureHandlerRootView>
   );
 }
